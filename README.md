@@ -21,15 +21,8 @@ to complex coding agents — it's just **search + tools + a bigger loop**.
 
 ## Files in this project
 
-This project has three versions of the same agent, one per LLM provider.
-They all do the exact same thing — the differences are purely in each
-provider's API "dialect" for tool calling.
-
 | File | Provider | Model used | SDK |
-|---|---|---|---|
-| `research_agent.py` | Anthropic (Claude) | `claude-sonnet-4-6` | `anthropic` |
-| `research_agent_deepseek.py` | DeepSeek | `deepseek-chat` | `openai` (DeepSeek is OpenAI-compatible) |
-| `research_agent_gemini.py` | Google Gemini | `gemini-2.5-flash` | `google-genai` |
+| `research_agent.py` | Google Gemini | `gemini-2.5-flash` | `google-genai` |
 
 Each has a matching `requirements*.txt` file. Only install and use **one**
 version at a time unless you want to compare them.
@@ -39,15 +32,12 @@ version at a time unless you want to compare them.
 1. **Install Python 3.9+** if you don't have it.
 
 2. **Get an API key** from whichever provider you want to use:
-   - Anthropic: https://console.anthropic.com/ (free trial credits for new accounts)
-   - DeepSeek: https://platform.deepseek.com/ (requires a small prepaid balance — very cheap)
    - Gemini: https://aistudio.google.com/apikey (generous free tier, no billing needed to start)
 
 3. **Install dependencies** for your chosen version:
    ```bash
-   pip install -r requirements.txt            # Anthropic
-   pip install -r requirements_deepseek.txt    # DeepSeek
-   pip install -r requirements_gemini.txt      # Gemini
+
+   pip install -r requirements.txt      # Gemini
    ```
 
 4. **Set your API key as an environment variable.**
@@ -73,14 +63,10 @@ version at a time unless you want to compare them.
 
 ```bash
 python research_agent.py "What are the health effects of intermittent fasting?"
-python research_agent_deepseek.py "What are the health effects of intermittent fasting?"
-python research_agent_gemini.py "What are the health effects of intermittent fasting?"
+
 ```
 
-Or run any of them with no arguments and it'll prompt you:
-```bash
-python research_agent.py
-```
+
 
 You'll see the agent's reasoning and tool calls printed live, followed by a
 final answer with sources.
